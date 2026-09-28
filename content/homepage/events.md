@@ -1,6 +1,6 @@
 ---
-title: "Events"
-weight: 2
+title: Events
+weight: 3
 header_menu: true
 ---
 
