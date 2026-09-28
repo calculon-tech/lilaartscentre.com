@@ -4,7 +4,7 @@ weight: 2
 header_menu: true
 ---
 
-##### Anu Bhaskararaman
+# Anu Bhaskararaman
 
 Anu Bhaskararaman is a dancer, theatre actor, performing artist and a B grade artist of the Doordarshan. Currently a disciple of Smt. Shruti Gopal, her initial training was under Smt. Seethalakshmi Vijay. Apart from Bharatanatyam, she has supplemental training in multiple forms of movement including ballet, contemporary, and kalarippayattu. She has a BA in English from Stella Maris College, an MA in Linguistics from SOAS, London, an MFA in Bharatanatyam from Kalai Kaviri University and graduated from the diploma course at the Attakkalari Centre for Movement Arts with Honours. 
 
