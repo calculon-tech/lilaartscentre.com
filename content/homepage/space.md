@@ -1,6 +1,6 @@
 ---
-title: "The Space"
-weight: 4
+title: The Space
+weight: 5
 header_menu: true
 ---
 
