@@ -1,6 +1,6 @@
 ---
 title: Artistic Director
-weight: 1
+weight: 2
 header_menu: true
 ---
 
