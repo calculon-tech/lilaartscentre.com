@@ -1,0 +1,12 @@
+{{- /*
+  Links off the site (Instagram, WhatsApp, the class form, the booking
+  calendar) open in a new tab so the visitor keeps their place here. Links
+  within the site, and mailto:/tel:, behave as normal links.
+*/ -}}
+{{- $u := urls.Parse .Destination -}}
+{{- $external := and (in (slice "http" "https") $u.Scheme) (ne $u.Host (urls.Parse site.BaseURL).Host) -}}
+<a href="{{ .Destination | safeURL }}"
+  {{- with .Title }} title="{{ . }}"{{ end }}
+  {{- if $external }} target="_blank" rel="noopener"{{ end }}>
+  {{- .Text | safeHTML -}}
+</a>
