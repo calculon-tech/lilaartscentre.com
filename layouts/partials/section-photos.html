@@ -1,0 +1,14 @@
+{{- /*
+  A homepage section's `photos` list (static/admin/config.yml): one photo
+  sits centred at portrait width, several share a row. Never cropped.
+*/ -}}
+{{- with .Params.photos -}}
+<div class="section-photos{{ if eq (len .) 1 }} section-photos--one{{ end }}">
+  {{- range . }}
+  <figure>
+    {{- partial "responsive-img.html" (dict "src" .image "alt" (.alt | default "") "page" $) -}}
+    {{- with .caption }}<figcaption>{{ . }}</figcaption>{{ end }}
+  </figure>
+  {{- end }}
+</div>
+{{- end -}}

@@ -1,0 +1,40 @@
+{{- /*
+  One <img> with a WebP srcset, for any image under assets/. Takes a dict:
+  src (as the CMS writes it, /images/foo.webp or images/foo.webp), alt,
+  title, page (whose own bundle resources win over assets/).
+
+  Anything it cannot resolve, an external URL or a missing file, falls
+  through to a plain <img> so the page still renders.
+*/ -}}
+{{- $src := .src -}}
+{{- $img := "" -}}
+{{- if not (urls.Parse $src).Scheme -}}
+  {{- $path := strings.TrimPrefix "/" $src -}}
+  {{- with .page -}}{{- with .Resources.GetMatch $path -}}{{- $img = . -}}{{- end -}}{{- end -}}
+  {{- if not $img -}}{{- with resources.Get $path -}}{{- $img = . -}}{{- end -}}{{- end -}}
+{{- end -}}
+
+{{- with $img -}}
+  {{- if eq .ResourceType "image" -}}
+    {{- $opts := site.Params.image_options | default "webp q90 lanczos photo" -}}
+    {{- $srcset := slice -}}
+    {{- range $w := slice 480 768 1200 1600 -}}
+      {{- if ge $img.Width $w -}}
+        {{- with $img.Resize (printf "%dx %s" $w $opts) -}}
+          {{- $srcset = $srcset | append (printf "%s %dw" .RelPermalink .Width) -}}
+        {{- end -}}
+      {{- end -}}
+    {{- end -}}
+    {{- /* Narrower than the smallest step: one rendition, no srcset. */ -}}
+    {{- $fallback := $img.Resize (printf "%dx %s" (int (math.Min $img.Width 1200)) $opts) -}}
+    <img src="{{ $fallback.RelPermalink }}"
+      {{- with $srcset }} srcset="{{ delimit . ", " }}" sizes="(max-width: 780px) 100vw, 780px"{{ end }}
+      width="{{ $fallback.Width }}" height="{{ $fallback.Height }}"
+      alt="{{ $.alt }}"{{ with $.title }} title="{{ . }}"{{ end }}
+      loading="lazy" decoding="async">
+  {{- else -}}
+    <img src="{{ .RelPermalink }}" alt="{{ $.alt }}" loading="lazy" decoding="async">
+  {{- end -}}
+{{- else -}}
+  <img src="{{ $src }}" alt="{{ .alt }}"{{ with .title }} title="{{ . }}"{{ end }} loading="lazy" decoding="async">
+{{- end -}}

@@ -83,6 +83,24 @@ collections:
       - { name: weight, label: Order, widget: number, value_type: int, min: 1 }
       - { name: header_menu, label: Show in the nav menu, widget: boolean, required: false, default: true }
       - { name: body, label: Body, widget: markdown }
+      # Rendered by layouts/partials/section-photos.html, never cropped.
+      - name: photos
+        label: Photos
+        label_singular: Photo
+        widget: list
+        required: false
+        fields:
+          - { name: image, label: Photo, widget: image }
+          - { name: alt, label: "Description (read aloud to blind visitors)", widget: string, required: false }
+          - { name: caption, label: Caption, widget: string, required: false }
+      - name: photos_position
+        label: Photos go
+        widget: select
+        required: false
+        default: below
+        options:
+          - { label: Below the text, value: below }
+          - { label: Above the text, value: above }
 
   # Programmes. Dated pages under content/events/, rendered by
   # layouts/events/ — a real Hugo section, not part of the one-page scroll.
