@@ -1,13 +1,16 @@
 ---
-title: "Bharatanatyam Recital"
-date: 2026-08-02T16:30:00+05:30
 kind: programme
-venue: "Egmore Museum Theatre"
-presenter: "Dance Drama Festival, Season 5"
+title: Bharatanatyam Recital
+date: yyyy-10-Fr 13:12
+venue: Egmore Museum Theatre
+presenter: Dance Drama Festival, Season 5
+summary: Lila Arts Centre presents Abhinaya V and Tulsi S, away at Egmore Museum Theatre.
 artists:
-  - "Abhinaya V"
-  - "Tulsi S"
-summary: "Lila Arts Centre presents Abhinaya V and Tulsi S, away at Egmore Museum Theatre."
+  - Abhinaya V
+  - Tulsi S
+entry: ''
+poster: ''
+draft: false
 ---
 
 We were proud to present Abhinaya V and Tulsi S in a Bharatanatyam recital as
