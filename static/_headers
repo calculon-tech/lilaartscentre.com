@@ -1,0 +1,10 @@
+# Hugo's fingerprinted bundles: style.min.<sha256>.css, script.min.<sha256>.js.
+/css/style.min.*
+  Cache-Control: public, max-age=31536000, immutable
+
+/js/script.min.*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Images only. Mixes processed images with un-hashed originals (favicons, og:image).
+/images/*
+  Cache-Control: public, max-age=86400, stale-while-revalidate=604800
