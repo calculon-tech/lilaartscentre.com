@@ -1,0 +1,14 @@
+{{- /* Latest albums, for the homepage Gallery section.
+       Usage: {{< recent-galleries limit="3" >}} */ -}}
+{{- $limit := int (.Get "limit" | default 3) -}}
+{{- with .Site.GetPage "/gallery" -}}
+{{- $gallery := . -}}
+{{- with first $limit .RegularPages.ByDate.Reverse }}
+<ul class="albums">
+  {{- range . }}{{ partial "gallery-card.html" . }}{{ end }}
+</ul>
+<p class="events-more"><a href="{{ $gallery.RelPermalink }}">See all albums</a></p>
+{{- else }}
+{{ partial "gallery-empty.html" . }}
+{{- end }}
+{{- end -}}

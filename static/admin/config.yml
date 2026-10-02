@@ -152,3 +152,35 @@ collections:
       # Announce later: a draft never reaches the built site.
       - { name: draft, label: Draft, widget: boolean, required: false, default: false }
       - { name: body, label: Full description, widget: markdown, required: false }
+
+  # Photo albums. Pages under content/gallery/, rendered by layouts/gallery/.
+  - name: galleries
+    label: Gallery
+    label_singular: Album
+    folder: content/gallery
+    create: true
+    slug: "{{slug}}"
+    extension: md
+    format: yaml-frontmatter
+    # Same trick as events: content/gallery/_index.md carries no `kind`.
+    filter: { field: kind, value: album }
+    sortable_fields:
+      fields: [date, title]
+      default: { field: date, direction: descending }
+    summary: "{{date | date('yyyy-MM-dd')}} — {{title}}"
+    fields:
+      - { name: kind, widget: hidden, default: album }
+      - { name: title, label: Title, widget: string }
+      - { name: date, label: Date, widget: datetime, date_format: yyyy-MM-dd, time_format: false, picker_utc: false }
+      # Left blank, the album's first photo is its cover.
+      - { name: cover, label: Cover photo (optional), widget: image, required: false }
+      - name: photos
+        label: Photos
+        label_singular: Photo
+        widget: list
+        fields:
+          - { name: image, label: Photo, widget: image }
+          - { name: alt, label: "Description (read aloud to blind visitors)", widget: string, required: false }
+          - { name: caption, label: Caption, widget: string, required: false }
+      - { name: draft, label: Draft, widget: boolean, required: false, default: false }
+      - { name: body, label: About this album, widget: markdown, required: false }

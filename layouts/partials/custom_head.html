@@ -257,7 +257,7 @@ hr { border: 0; border-top: 1px solid var(--alta-rule); }
 
 /* ---- /events/ -------------------------------------------------------- */
 
-.events { list-style: none; margin: 2.4rem 0 4rem; padding: 0; }
+.post-content .events { list-style: none; margin: 2.4rem 0 4rem; padding: 0; }
 .post-content .events > li::before { content: none; }
 
 .event + .event { border-top: 1px solid var(--alta-rule); }
@@ -332,6 +332,65 @@ hr { border: 0; border-top: 1px solid var(--alta-rule); }
 .events-empty, .events-subscribe { font-size: 1.49rem; color: var(--alta-muted); }
 .events-subscribe a, .events-empty a, .events-more a { color: var(--alta-brass); font-weight: 600; }
 .events-subscribe a { display: inline-flex; align-items: center; gap: .4em; }
+/* Nothing upcoming: one button to where programmes are announced, in the
+   nav buttons' colours. */
+.events-empty .events-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+  padding: 0.8em 1.3em;
+  border-radius: 3px;
+  background: var(--alta-button);
+  color: var(--alta-button-text);
+  font-weight: 600;
+  text-decoration: none;
+}
+.events-empty .events-cta:hover,
+.events-empty .events-cta:focus-visible {
+  background: var(--alta-button-hover);
+  color: var(--alta-button-hover-text);
+}
+
+/* ---- gallery ----------------------------------------------------------- */
+
+/* Album cards. Covers are cropped to one shape so the grid lines up; the
+   album page itself never crops. */
+.post-content .albums {
+  list-style: none;
+  padding: 0;
+  margin: 2.4rem 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 24rem), 1fr));
+  gap: 2.4rem;
+}
+.post-content .albums > li::before { content: none; }
+/* The theme indents every list item 30px; these are layouts, not lists. */
+.post-content .albums > li,
+.post-content .events > li { margin-left: 0; }
+.album__link { display: block; color: inherit; text-decoration: none; }
+.album__link img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 3px;
+}
+.album__title {
+  display: block;
+  margin-top: 0.8rem;
+  font-family: var(--font-display);
+  font-size: 1.15em;
+  color: var(--alta-text);
+}
+.album__link:hover .album__title { color: var(--alta-brass); }
+.album__meta { display: block; font-size: 0.8em; color: var(--alta-muted); }
+
+/* An album: columns, so every photo keeps its own shape. */
+.gallery { columns: 3 22rem; column-gap: 1.6rem; margin-top: 2.4rem; }
+.gallery figure { margin: 0 0 1.6rem; break-inside: avoid; }
+.gallery img { display: block; width: 100%; height: auto; border-radius: 3px; }
+.gallery figcaption { margin-top: 0.5rem; font-size: 0.8em; color: var(--alta-muted); }
 
 /* ---- a single programme ---------------------------------------------- */
 

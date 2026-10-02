@@ -54,6 +54,7 @@ protocol = "webcal://"
 
 [permalinks]
 events = "/events/:year/:slug/"
+gallery = "/gallery/:slug/"
 
 [markup]
 [markup.goldmark]
