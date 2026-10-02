@@ -11,62 +11,93 @@
 /* ===================================================================
    Alta — named for the red dye on a dancer's feet.
 
-   Dark-first, because dance is watched in a darkened hall: photographs
-   sit in it rather than on it. It also settles the old problem, which
-   was a warm cream ground fighting a cold blue-grey one — everything
-   here is warm, and the two section tones differ just enough to
-   separate without banding the page into stripes.
+   Two palettes, chosen by the device: light by default and whenever the
+   device states no preference, dark when it asks for dark. Both are
+   warm, and in both the two section tones differ just enough to separate
+   without banding the page into stripes. The hero is the same in both:
+   cream type on a dark panel over the photograph.
 
-   Contrast against the #171210 ground, measured:
-     bone  #EDE4D8  14.8:1
-     brass #C8A24A   7.7:1   links, dates, rules
-     muted #A39384   6.3:1   secondary text
-     alta  #C4402F   3.7:1   large text only, never body
+   Contrast, measured against each ground (and its raised tone):
+                 light #FAF6EF       dark #171210
+     text        #2A201B  14.8:1     #EDE4D8  14.8:1
+     brass       #7E5C14   5.7:1     #C8A24A   7.7:1   links, dates, rules
+     muted       #665648   6.5:1     #A39384   6.3:1   secondary text
+     rule        #B39E86   2.4:1     #5B4838   2.2:1   hairlines only
    =================================================================== */
 :root {
-  --alta-ground: #171210;
-  --alta-raise: #1F1815;
-  --alta-bone: #EDE4D8;
-  --alta-brass: #C8A24A;
-  --alta-muted: #A39384;
-  --alta-red: #C4402F;
-  /* Was #332722, which measured 1.29:1 on the ground — a hairline nobody
-     could see, doing real work separating one programme from the next.
-     #5B4838 is 2.15:1: visible as a rule without becoming a hard line. */
-  --alta-rule: #5B4838;
-  --alta-hover: #241C18;
-  /* Hero text sits on a photograph with pure white pixels in it, so the
-     panel behind it has to do the work rather than a wash over the image.
-     0.86 over white worst-case measures 11.5:1. */
+  color-scheme: light dark;
+
+  --alta-ground: #FAF6EF;
+  --alta-raise: #F2EBE1;
+  --alta-text: #2A201B;
+  --alta-brass: #7E5C14;
+  --alta-muted: #665648;
+  --alta-rule: #B39E86;
+  --alta-hover: #EFE6DA;
+  --alta-code: #EFE6DA;
+  --alta-footer: #EFE7DC;
+  /* Nav buttons: cream on dark brass 5.7:1, darker on hover 7.9:1. */
+  --alta-button: #7E5C14;
+  --alta-button-text: #FAF6EF;
+  --alta-button-hover: #634810;
+  --alta-button-hover-text: #FAF6EF;
+
+  /* The hero, identical in both palettes. Its text sits on a photograph
+     with pure white pixels in it, so the panel behind it does the work
+     rather than a wash over the image: 0.86 over white worst-case
+     measures 11.5:1. */
   --alta-guard: rgba(15, 10, 9, 0.86);
+  --alta-cover-text: #F6EDE2;
 
   /* --- theme variables --- */
-  --cover-text-color: #F6EDE2;
-  --highlight: var(--alta-brass);
-  --highlight-contrast: var(--alta-ground);
-  /* The inverse pair is the :hover state. Setting it to the same brass meant
-     the nav buttons did not change at all on hover — a lighter brass keeps
-     dark text on it at 9.6:1 and actually reads as a response. */
-  --highlight-inverse: #DCB65E;
-  --highlight-inverse-contrast: var(--alta-ground);
+  --cover-text-color: var(--alta-cover-text);
+  --highlight: var(--alta-button);
+  --highlight-contrast: var(--alta-button-text);
+  /* The inverse pair is the :hover state; it has to differ from the
+     resting pair or the nav buttons do not respond at all. */
+  --highlight-inverse: var(--alta-button-hover);
+  --highlight-inverse-contrast: var(--alta-button-hover-text);
   --cover-title-and-description-guard-bg-color: var(--alta-guard);
   --cover-title-text-shadow: rgba(0, 0, 0, 0.55) 0 2px 18px;
   --sticky-menu-text-color: var(--alta-brass);
-  --section-light-text-color: var(--alta-bone);
+  --section-light-text-color: var(--alta-text);
   --section-light-bg-color: var(--alta-ground);
-  --section-dark-text-color: var(--alta-bone);
+  --section-dark-text-color: var(--alta-text);
   --section-dark-bg-color: var(--alta-raise);
   --section-uni-quote: var(--alta-muted);
-  --section-uni-code-bg-color: #241C18;
-  --single-page-text-color: var(--alta-bone);
+  --section-uni-code-bg-color: var(--alta-code);
+  --single-page-text-color: var(--alta-text);
   --single-page-bg-color: var(--alta-ground);
-  --footer-color-background: #0E0A09;
+  --footer-color-background: var(--alta-footer);
   --footer-color: var(--alta-muted);
 
   /* Two faces, both already on the reader's machine. Old-style serifs for
      display — Georgia everywhere, Iowan and Palatino where they exist. */
   --font-display: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
   --font-body: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Dance is watched in a darkened hall: on a device that asks for dark,
+   the photographs sit in the page rather than on it. */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --alta-ground: #171210;
+    --alta-raise: #1F1815;
+    --alta-text: #EDE4D8;
+    --alta-brass: #C8A24A;
+    --alta-muted: #A39384;
+    /* Was #332722, which measured 1.29:1 on the ground — a hairline nobody
+       could see, doing real work separating one programme from the next. */
+    --alta-rule: #5B4838;
+    --alta-hover: #241C18;
+    --alta-code: #241C18;
+    --alta-footer: #0E0A09;
+    /* Dark text on brass 7.7:1, on the lighter hover brass 9.6:1. */
+    --alta-button: #C8A24A;
+    --alta-button-text: #171210;
+    --alta-button-hover: #DCB65E;
+    --alta-button-hover-text: #171210;
+  }
 }
 
 body { font-family: var(--font-body); background: var(--alta-ground); }
@@ -157,7 +188,7 @@ h1, h2, h3, h4, h5, h6,
   text-align: center;
   border-radius: 50%;
   background: rgba(12, 8, 7, 0.72);
-  color: var(--alta-bone);
+  color: var(--alta-cover-text);
   text-decoration: none;
 }
 
@@ -315,7 +346,7 @@ hr { border: 0; border-top: 1px solid var(--alta-rule); }
   text-transform: none; letter-spacing: 0;
   color: var(--alta-muted); font-style: italic;
 }
-.event-artists { margin-top: 0; color: var(--alta-bone); font-size: 1.68rem; }
+.event-artists { margin-top: 0; color: var(--alta-text); font-size: 1.68rem; }
 .event-presenter { margin-top: 0; color: var(--alta-muted); font-size: 1.52rem; font-style: italic; }
 .event-poster { display: block; width: 100%; height: auto; margin: 2.4rem 0; border-radius: 3px; }
 
