@@ -1,16 +1,20 @@
 ---
-title: "Tha Thai Ha Ha"
-date: 2025-10-24T18:30:00+05:30
 kind: programme
+title: Tha Thai Ha Ha
+date: yyyy-10-Fr 13:12
+venue: ''
+presenter: ''
+summary: Part satire, part dance — comedy as a native idiom of Indian classical forms.
 artists:
-  - "Shruti Gopal"
-  - "Preethi Bharadwaj"
-  - "Indu Venu"
-entry: "Tickets"
-summary: "Part satire, part dance — comedy as a native idiom of Indian classical forms."
+  - Shruti Gopal
+  - Preethi Bharadwaj
+  - Indu Venu
+entry: Tickets
+poster: ''
+draft: false
 ---
 
-*HUMorously HUMan* — an hour that takes comedy in dance seriously. Comedy is
+_HUMorously HUMan_ — an hour that takes comedy in dance seriously. Comedy is
 native to most Indian art forms, and this programme treats it as both a joy
 and a responsibility.
 
