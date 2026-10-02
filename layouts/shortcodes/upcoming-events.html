@@ -1,4 +1,6 @@
-{{- /* Next few programmes, for the homepage Events section.
+{{- /* A few programmes for the homepage Events section: the next ones, or
+       when nothing is scheduled, the Instagram button and the latest past
+       ones. Always ends with the way into /events/.
        Usage: {{< upcoming-events limit="3" >}} */ -}}
 {{- $limit := int (.Get "limit" | default 3) -}}
 {{- with .Site.GetPage "/events" -}}
@@ -8,8 +10,14 @@
 <ul class="events">
   {{- range . }}{{ partial "event-row.html" . }}{{ end }}
 </ul>
-<p class="events-more"><a href="{{ $events.RelPermalink }}">See all programmes</a></p>
 {{- else }}
 {{ partial "events-empty.html" . }}
+{{- with first $limit (sort (where $events.RegularPages "Date" "lt" now) "Date" "desc") }}
+<h3 class="events-year">Recent programmes</h3>
+<ul class="events events--past">
+  {{- range . }}{{ partial "event-row.html" . }}{{ end }}
+</ul>
 {{- end }}
+{{- end }}
+<p class="events-more"><a href="{{ $events.RelPermalink }}">See all programmes</a></p>
 {{- end -}}
