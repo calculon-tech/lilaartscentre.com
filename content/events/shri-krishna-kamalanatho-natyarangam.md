@@ -1,7 +1,7 @@
 ---
 kind: programme
 title: Shri Krishna Kamalanatho
-date: yyyy-10-Fr 13:12
+date: 2026-07-18
 venue: ''
 presenter: Natyarangam
 summary: Anu Bhaskararaman performs the varnam, under the auspices of Natyarangam.

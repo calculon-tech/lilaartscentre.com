@@ -1,7 +1,7 @@
 ---
 kind: programme
 title: 'Carnatic Vocal Recital and Guided Listening: Raaga Aarabhi'
-date: yyyy-10-Fr 13:12
+date: 2026-09-20T18:00:00+05:30
 venue: ''
 presenter: The Carnatic Backpacker
 summary: A vocal recital on our stage, followed by a guided listening of Raaga Aarabhi.

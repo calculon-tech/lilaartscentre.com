@@ -1,7 +1,7 @@
 ---
 kind: programme
 title: Tha Thai Ha Ha
-date: yyyy-10-Fr 13:12
+date: 2025-10-24T18:30:00+05:30
 venue: ''
 presenter: ''
 summary: Part satire, part dance — comedy as a native idiom of Indian classical forms.

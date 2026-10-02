@@ -1,7 +1,7 @@
 ---
 kind: programme
 title: Shubhamani Chandrashekar and Deepali Salil
-date: yyyy-10-Fr 13:12
+date: 2024-12-24
 venue: ''
 presenter: ''
 summary: An evening of Bharatanatyam on our stage.
